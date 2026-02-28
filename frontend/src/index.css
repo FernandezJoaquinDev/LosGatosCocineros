@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@layer components {
+  .receta {
+    @apply w-full
+            
+            px-6
+            py-4
+            bg-amber-200
+            rounded-xl
+            shadow
+            hover:bg-amber-500
+            hover:shadow-md
+            transition
+            mb-1
+            text-center
+            cursor-pointer;
+  }
+  .footItem {
+    @apply p-1 md:hover:cursor-pointer md:hover:shadow md:hover:rounded-2xl md:hover:bg-amber-950;
+  }
+}
