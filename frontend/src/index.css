@@ -16,6 +16,6 @@
             cursor-pointer;
   }
   .footItem {
-    @apply p-1 md:hover:cursor-pointer md:hover:shadow md:hover:rounded-2xl md:hover:bg-amber-950;
+    @apply p-1 md:hover:cursor-pointer md:hover:shadow md:hover:rounded md:hover:bg-amber-950 md:hover:text-amber-300;
   }
 }

@@ -1,55 +1,77 @@
-import React from 'react'
-// import './App.css'
+import React from "react";
+import { useNavigate } from "react-router-dom";
 const Home = () => {
+  const navigate = useNavigate();
   return (
-    <div className="bg-amber-50">
-    <div className='w-full bg-amber-300' id='navbar'>
-      <div className="flex justify-end">
-        
-         <span className='me-2'>Opciones </span> 
+    <div className="bg-amber-200 min-h-screen flex flex-col justify-between">
+      <div className="flex justify-center items-center bg-amber-300 py-2">
+        <img
+          src="src/assets/gatosCocinerosSF.png"
+          alt="logoPrincipal"
+          className="w-32 md:w-40"
+        />
       </div>
-      </div>  
-      <div className="flex justify-center items-center bg-amber-300" id='logoP'>
-        <img src="src/assets/gatosCocinerosSF.png" alt="logoPrincipal" className='w-77'/>
-      </div>
-    <div className="max-w-5xl mx-auto px-4 text-center rounded">
-      <span className='text-2xl my-1'>🌟Recetas principales🌟</span>
-      <div className="receta">
-        <span>Bizcochuelo de Naranja</span>
-        
-      </div>
-      <div className="receta">
-        <span>Bizcochuelo de Banana</span>
-        
-      </div>
-      <div className="receta">
-        <span>Pastafrola</span>
-        
-      </div>
-      <div className="receta">
-        <span>Pan</span>
-        
-      </div>
-      <div className="receta">
-        <span>Galletas</span>
-        
-      </div>
-    
-    </div>
-    <div className="bg-amber-300 mt-3 max-w-6xl mx-auto p-3 rounded-2xl text-center ">
-      <h4 className='text-2xl mb-2'>¿Queres ver todas nuestras recetas?</h4>
-      
-      <a className='p-3 text-xl md:hover:bg-amber-900 md:hover:text-amber-100 md:hover:shadow-md md:hover:rounded-2xl cursor-pointer'>¡Conocelas Aquí!</a>
-    </div>
-    <div className="w-full bg-amber-900 text-amber-300 mt-2 p-3 flex justify-end">
-      <span className='footItem '>Sobre Nosotros </span>
-      <span className='p-1'>|</span>
-      <span className='mx-2 footItem'>Redes</span>
-      <span className='p-1'>|</span>
-      <span className='footItem'>Proyecto</span>
-    </div>
-    </div>
-  )
-}
 
-export default Home
+      <div className="flex items-center justify-center flex-1">
+        <div className="flex flex-col md:flex-row gap-5 md:gap-24">
+          <div
+            className="relative cursor-pointer
+                       w-65 h-65 md:w-90 md:h-90
+                       bg-orange-600 rounded-3xl shadow-xl
+                       flex items-center justify-center
+                       transition-all duration-300
+                       hover:scale-105 hover:shadow-2xl active:scale-95"
+          >
+            <span className="text-xl md:text-3xl font-bold text-white z-10">
+              Con Gluten
+            </span>
+
+            <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-white rounded-tl-xl"></div>
+            <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-white rounded-tr-xl"></div>
+            <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-white rounded-bl-xl"></div>
+            <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-white rounded-br-xl"></div>
+          </div>
+
+          {/* 🟢 Sin Gluten */}
+          <div
+            className="relative cursor-pointer
+                       w-65 h-65 md:w-90 md:h-90
+                       bg-lime-600 rounded-3xl shadow-xl
+                       flex items-center justify-center
+                       transition-all duration-300
+                       hover:scale-105 hover:shadow-2xl active:scale-95"
+          >
+            <span className="text-xl md:text-3xl font-bold text-white z-10">
+              Sin Gluten
+            </span>
+
+            <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-white rounded-tl-xl"></div>
+            <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-white rounded-tr-xl"></div>
+            <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-white rounded-bl-xl"></div>
+            <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-white rounded-br-xl"></div>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full bg-amber-300 text-amber-900 p-3 flex justify-end">
+        <span className="footItem" onClick={() => navigate("/aboutus")}>
+          Sobre Nosotros
+        </span>
+        <span className="px-2">|</span>
+        <span className="footItem" onClick={() => navigate("/redes")}>
+          Redes
+        </span>
+        <span className="px-2">|</span>
+        <span className="footItem" onClick={() => navigate("/proyecto")}>
+          Proyecto
+        </span>
+        <span className="px-2">|</span>
+        <span className="footItem" onClick={() => navigate("/login")}>
+          Administración
+        </span>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
