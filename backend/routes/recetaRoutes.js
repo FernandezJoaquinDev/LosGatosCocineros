@@ -1,23 +1,30 @@
-const express = require("express")
-const { getRecetasTotales, postReceta, getReceta, deleteReceta } = require("../controllers/recetaControllers")
-const {check} = require("express-validator")
-const { validacionRutas } = require("../middlewares/validarCampos")
+const express = require("express");
+const {
+  getRecetasTotales,
+  postReceta,
+  getReceta,
+  deleteReceta,
+} = require("../controllers/recetaControllers");
+const { check } = require("express-validator");
+const { validacionRutas } = require("../middlewares/validarCampos");
+const { validarJWT } = require("../middlewares/validarJWT");
 
-const router = express.Router()
+const router = express.Router();
 
-router.get("/", getRecetasTotales)
+router.get("/", getRecetasTotales);
 
-router.post("/", [
-] ,postReceta)
+router.post("/", validarJWT, postReceta);
 
-router.get("/:id",[
-    check("id", "No es un id valido para mongo").isMongoId(),
-    validacionRutas
-], getReceta)
+router.get(
+  "/:id",
+  [check("id", "No es un id valido para mongo").isMongoId(), validacionRutas],
+  getReceta,
+);
 
-router.delete("/:id",[
-    check("id", "No es un id valido para mongo").isMongoId(),
-    validacionRutas
-],deleteReceta)
+router.delete(
+  "/:id",
+  [check("id", "No es un id valido para mongo").isMongoId(), validacionRutas],
+  deleteReceta,
+);
 
-module.exports = router
+module.exports = router;

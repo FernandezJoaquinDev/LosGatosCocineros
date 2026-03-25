@@ -1,8 +1,49 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
+
+  const [dni, setDni] = useState("");
+  const [contraseña, setContraseña] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    setError("");
+
+    try {
+      const resp = await fetch("http://localhost:5000/usuarios/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          dni,
+          contraseña,
+        }),
+      });
+
+      const data = await resp.json();
+
+      if (!resp.ok) {
+        setError(data.msg);
+        return;
+      }
+
+      sessionStorage.setItem("token", data.token);
+
+      sessionStorage.setItem("usuario", JSON.stringify(data.usuario));
+      alert("Sesion iniciada correctamente");
+      navigate("/admin");
+    } catch (err) {
+      console.log(err);
+      setError("Error al conectar con el servidor");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-amber-200 flex items-center justify-center relative">
       <button
@@ -46,11 +87,13 @@ const Login = () => {
             </p>
           </div>
 
-          <form className="flex flex-col gap-4">
+          <form className="flex flex-col gap-4" onSubmit={handleLogin}>
             <div className="flex flex-col">
               <label className="text-sm text-amber-900 mb-1">DNI</label>
               <input
                 type="text"
+                value={dni}
+                onChange={(e) => setDni(e.target.value)}
                 className="p-2 rounded-lg border border-amber-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
               />
             </div>
@@ -59,9 +102,16 @@ const Login = () => {
               <label className="text-sm text-amber-900 mb-1">Contraseña</label>
               <input
                 type="password"
+                value={contraseña}
+                onChange={(e) => setContraseña(e.target.value)}
                 className="p-2 rounded-lg border border-amber-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
               />
             </div>
+            {error && (
+              <div className="bg-red-100 text-red-700 p-2 rounded-lg text-sm text-center">
+                {error}
+              </div>
+            )}
 
             <button
               type="submit"

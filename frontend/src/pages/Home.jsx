@@ -62,11 +62,15 @@ const Home = () => {
           Redes
         </span>
         <span className="px-2">|</span>
-        <span className="footItem" onClick={() => navigate("/proyecto")}>
+        <a
+          className="footItem"
+          href="https://github.com/FernandezJoaquinDev/LosGatosCocineros"
+          target="_blank"
+        >
           Proyecto
-        </span>
+        </a>
         <span className="px-2">|</span>
-        <span className="footItem" onClick={() => navigate("/login")}>
+        <span className="footItem" onClick={() => navigate("/admin")}>
           Administración
         </span>
       </div>
