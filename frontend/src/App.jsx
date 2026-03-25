@@ -6,6 +6,8 @@ import RecetaUnitaria from "./pages/RecetaUnitaria";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import PrivateRoute from "./routes/PrivateRoute";
+import ConGluten from "./pages/ConGluten";
+import SinGluten from "./pages/SinGluten";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="*" element={<Error404 />} />
       <Route path="/recetas/:id" element={<RecetaUnitaria />} />
+      <Route path="/recetas/conGLuten" element={<ConGluten />} />
+      <Route path="/recetas/sinGluten" element={<SinGluten />} />
       <Route path="/login" element={<Login />} />
       <Route
         path="/admin"

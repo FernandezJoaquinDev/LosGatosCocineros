@@ -21,6 +21,7 @@ const Home = () => {
                        flex items-center justify-center
                        transition-all duration-300
                        hover:scale-105 hover:shadow-2xl active:scale-95"
+            onClick={() => navigate("/recetas/conGluten")}
           >
             <span className="text-xl md:text-3xl font-bold text-white z-10">
               Con Gluten
@@ -32,7 +33,6 @@ const Home = () => {
             <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-white rounded-br-xl"></div>
           </div>
 
-          {/* 🟢 Sin Gluten */}
           <div
             className="relative cursor-pointer
                        w-65 h-65 md:w-90 md:h-90
@@ -40,6 +40,7 @@ const Home = () => {
                        flex items-center justify-center
                        transition-all duration-300
                        hover:scale-105 hover:shadow-2xl active:scale-95"
+            onClick={() => navigate("recetas/sinGluten")}
           >
             <span className="text-xl md:text-3xl font-bold text-white z-10">
               Sin Gluten
