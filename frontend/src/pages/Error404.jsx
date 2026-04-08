@@ -5,7 +5,7 @@ const Error404 = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-amber-300">
       <img
-        src="public/error404.png"
+        src="https://res.cloudinary.com/dfk6x5ght/image/upload/q_auto/f_auto/v1775664452/error404_ocaxay.png"
         alt="img404"
         width={450}
         className="transition"

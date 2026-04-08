@@ -6,7 +6,7 @@ const Home = () => {
     <div className="bg-amber-200 min-h-screen flex flex-col justify-between">
       <div className="flex justify-center items-center bg-amber-300 py-2">
         <img
-          src="public/gatosCocinerosSF.png"
+          src="https://res.cloudinary.com/dfk6x5ght/image/upload/q_auto/f_auto/v1775664453/gatosCocinerosSF_nnitd1.png"
           alt="logoPrincipal"
           className="w-32 md:w-40"
         />

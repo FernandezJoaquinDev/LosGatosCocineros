@@ -29,7 +29,7 @@ const AboutUs = () => {
         <div className="bg-amber-100 shadow-xl rounded-2xl p-8 w-full flex flex-col items-center">
           <div className="w-40 h-40 mb-4">
             <img
-              src="public/imgAbout.png"
+              src="https://res.cloudinary.com/dfk6x5ght/image/upload/q_auto/f_auto/v1775664452/imgAbout_vi2ar2.png"
               alt="Nosotros"
               className="w-full h-full object-cover rounded-full border-4 border-amber-300 shadow-md"
             />
