@@ -6,7 +6,7 @@ const Home = () => {
     <div className="bg-amber-200 min-h-screen flex flex-col justify-between">
       <div className="flex justify-center items-center bg-amber-300 py-2">
         <img
-          src="src/assets/gatosCocinerosSF.png"
+          src="public/gatosCocinerosSF.png"
           alt="logoPrincipal"
           className="w-32 md:w-40"
         />
@@ -55,12 +55,8 @@ const Home = () => {
       </div>
 
       <div className="w-full bg-amber-300 text-amber-900 p-3 flex justify-end">
-        <span className="footItem" onClick={() => navigate("/aboutus")}>
+        <span className="footItem" onClick={() => navigate("/about")}>
           Sobre Nosotros
-        </span>
-        <span className="px-2">|</span>
-        <span className="footItem" onClick={() => navigate("/redes")}>
-          Redes
         </span>
         <span className="px-2">|</span>
         <a
