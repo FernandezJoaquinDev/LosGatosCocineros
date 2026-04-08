@@ -15,16 +15,19 @@ const Login = () => {
     setError("");
 
     try {
-      const resp = await fetch("http://localhost:5000/usuarios/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const resp = await fetch(
+        "https://losgatoscocineros.onrender.com/usuarios/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            dni,
+            contraseña,
+          }),
         },
-        body: JSON.stringify({
-          dni,
-          contraseña,
-        }),
-      });
+      );
 
       const data = await resp.json();
 

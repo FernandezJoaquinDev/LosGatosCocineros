@@ -8,7 +8,9 @@ const ConGluten = () => {
   useEffect(() => {
     const obtenerRecetas = async () => {
       try {
-        const resp = await fetch("http://localhost:5000/recetas");
+        const resp = await fetch(
+          "https://losgatoscocineros.onrender.com/recetas",
+        );
         const data = await resp.json();
 
         const filtradas = data.filter((r) => r.sinGluten === false);

@@ -36,12 +36,16 @@ const Admin = () => {
         nombre: form.nombre,
         ingredientes: form.ingredientes
           .split(",")
-          .map((ing) => ing.trim())
-          .filter((ing) => ing !== "")
-          .map((ing) => ({
-            nombre: ing,
-            cantidad: "",
-          })),
+          .map((item) => item.trim())
+          .filter((item) => item !== "")
+          .map((item) => {
+            const [nombre, cantidad] = item.split(":");
+
+            return {
+              nombre: nombre?.trim() || "",
+              cantidad: cantidad?.trim() || "",
+            };
+          }),
         pasos: form.pasos
           .split(".")
           .map((p) => p.trim())
@@ -53,14 +57,17 @@ const Admin = () => {
         categoria: form.categoria,
       };
 
-      const resp = await fetch("http://localhost:5000/recetas", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+      const resp = await fetch(
+        "https://losgatoscocineros.onrender.com/recetas",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(receta),
         },
-        body: JSON.stringify(receta),
-      });
+      );
 
       const data = await resp.json();
 
@@ -136,7 +143,8 @@ const Admin = () => {
 
             <div className="flex flex-col">
               <label className="text-sm text-amber-900 mb-1">
-                Ingredientes (separados por coma)
+                Ingredientes (formato: ingrediente:cantidad,
+                ingrediente:cantidad)
               </label>
               <input
                 type="text"
