@@ -1,27 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const ConGluten = () => {
-  const [recetas, setRecetas] = useState([]);
+const ConGluten = ({ conGluten }) => {
   const [busqueda, setBusqueda] = useState("");
   const navigate = useNavigate();
-  useEffect(() => {
-    const obtenerRecetas = async () => {
-      try {
-        const resp = await fetch(
-          "https://losgatoscocineros.onrender.com/recetas",
-        );
-        const data = await resp.json();
-
-        const filtradas = data.filter((r) => r.sinGluten === false);
-        setRecetas(filtradas);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    obtenerRecetas();
-  }, []);
 
   return (
     <div className="min-h-screen bg-orange-200 flex flex-col items-center px-4 py-10">
@@ -60,7 +42,7 @@ const ConGluten = () => {
       />
 
       <div className="grid gap-6 w-full max-w-4xl">
-        {recetas
+        {conGluten
           .filter((receta) =>
             receta.nombre.toLowerCase().includes(busqueda.toLowerCase()),
           )
