@@ -1,8 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
-const Login = () => {
+const Login = ({ log }) => {
   const navigate = useNavigate();
 
   const [dni, setDni] = useState("");
@@ -39,7 +40,12 @@ const Login = () => {
       sessionStorage.setItem("token", data.token);
 
       sessionStorage.setItem("usuario", JSON.stringify(data.usuario));
-      alert("Sesion iniciada correctamente");
+      log(data.usuario.nombre);
+      Swal.fire({
+        text: "Sesion iniciada correctamente",
+        icon: "success",
+        confirmButtonText: "continuar",
+      });
       navigate("/admin");
     } catch (err) {
       console.log(err);

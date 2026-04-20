@@ -13,6 +13,7 @@ import { useState, useEffect } from "react";
 function App() {
   const [conGluten, setConGluten] = useState([]);
   const [sinGluten, setSinGluten] = useState([]);
+  const [usuario, setUsuario] = useState("");
 
   useEffect(() => {
     const obtenerRecetas = async () => {
@@ -36,7 +37,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home usuario={usuario} log={setUsuario} />} />
       <Route path="*" element={<Error404 />} />
       <Route
         path="/recetas/conGLuten"
@@ -46,7 +47,7 @@ function App() {
         path="/recetas/sinGluten"
         element={<SinGluten sinGluten={sinGluten} />}
       />
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<Login log={setUsuario} />} />
       <Route path="/about" element={<AboutUs />} />
       <Route
         path="/admin"

@@ -1,7 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-const Home = () => {
+const Home = ({ usuario, log }) => {
   const navigate = useNavigate();
+  const cerrarSesion = () => {
+    log("");
+    sessionStorage.removeItem("usuario");
+    sessionStorage.removeItem("token");
+  };
   return (
     <div className="bg-amber-200 min-h-screen flex flex-col justify-between">
       <div className="flex justify-center items-center bg-amber-300 py-2">
@@ -54,22 +59,39 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="w-full bg-amber-300 text-amber-900 p-3 flex justify-end">
-        <span className="footItem" onClick={() => navigate("/about")}>
-          Sobre Nosotros
-        </span>
-        <span className="px-2">|</span>
-        <a
-          className="footItem"
-          href="https://github.com/FernandezJoaquinDev/LosGatosCocineros"
-          target="_blank"
+      <div
+        className={`w-full bg-amber-300 text-amber-900 p-3 flex flex-col md:flex-row ${
+          usuario ? "md:justify-between" : "justify-end"
+        } items-center md:items-center gap-2`}
+      >
+        <div
+          className={`${usuario ? "flex items-center gap-2 whitespace-nowrap" : "hidden"}`}
         >
-          Proyecto
-        </a>
-        <span className="px-2">|</span>
-        <span className="footItem" onClick={() => navigate("/admin")}>
-          Administración
-        </span>
+          <span>¡Hola {`${usuario}`}!</span>
+          <button
+            className="ms-2 bg-transparent hover:bg-red-700 text-blue-50 font-semibold hover:text-white py-2 px-2 border border-blue-50 hover:border-transparent rounded md:text-xs text-sm"
+            onClick={cerrarSesion}
+          >
+            Cerrar Sesión...
+          </button>
+        </div>
+        <div className="">
+          <span className="footItem" onClick={() => navigate("/about")}>
+            Sobre Nosotros
+          </span>
+          <span className="px-2">|</span>
+          <a
+            className="footItem"
+            href="https://github.com/FernandezJoaquinDev/LosGatosCocineros"
+            target="_blank"
+          >
+            Proyecto
+          </a>
+          <span className="px-2">|</span>
+          <span className="footItem" onClick={() => navigate("/admin")}>
+            Administración
+          </span>
+        </div>
       </div>
     </div>
   );
